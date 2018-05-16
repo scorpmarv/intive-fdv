@@ -1,0 +1,15 @@
+{% block content %}
+    <h2>Rentals</h2> <a href="{% url 'rental-create' %}">Add rental</a>
+    {% for rental in rentals %}
+        <h3>Rental #{{ rental.id }}</h3>
+        <ul>
+            <li>Client: {{ rental.client }}</li>
+            <li>Date: {{ rental.date }}</li>
+            <li>Bike quantity: {{ rental.bike_qty }}</li>
+            <li>Rental time: {{ rental.rental_time }} {{ rental.get_rental_type_display }}</li>
+            <li>Total paid: ${{ rental.paid_amount }}</li>
+        </ul>
+    {% empty %}
+        <h3>No rentals yet!</h3>
+    {% endfor %}
+{% endblock %}
